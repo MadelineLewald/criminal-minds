@@ -41,7 +41,27 @@ app.controller('MyController', ['$http', function($http){
         controller.getJailbirds();
       },
       function(error){
-        
+
+      }
+    )
+  }
+
+  this.editJailbird = function(jailbird){
+    $http({
+      method: 'PUT',
+      url: '/jailbirds/' + jailbird._id,
+      data: {
+        name: this.updatedName,
+        conviction: this.updatedConviction,
+        sentence: this.updatedSentence,
+        image: this.updatedImage
+      }
+    }).then(
+      function(response){
+        controller.getJailbirds();
+      },
+      function(error){
+        console.log(error);
       }
     )
   }
