@@ -65,4 +65,21 @@ app.controller('MyController', ['$http', function($http){
       }
     )
   }
+
+  this.getJailbirds = function(){
+    $http({
+      method: 'GET',
+      url: '/jailbirds'
+    }).then(
+      function(response){
+        console.log(this);
+        console.log(controller);
+        controller.jailbirds = response.data;
+      },
+      function(error){
+        console.log(error);
+      }
+    )
+  }
+  this.getJailbirds();
 }]);
