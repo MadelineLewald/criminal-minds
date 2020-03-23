@@ -6,6 +6,8 @@ app.controller('MyController', ['$http', function($http){
   this.sentence = null;
   this.image = null;
 
+  this.indexOfEditFormToShow = null;
+
   const controller = this;
 
   this.createJailbird = function(){
@@ -58,6 +60,8 @@ app.controller('MyController', ['$http', function($http){
       }
     }).then(
       function(response){
+
+        controller.indexOfEditFormToShow = null;
         controller.getJailbirds();
       },
       function(error){
