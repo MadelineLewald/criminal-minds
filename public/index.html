@@ -9,7 +9,33 @@
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body>
+  <body ng-controller="MyController as ctrl">
+    <h1>Inmates</h1>
+    <form ng-submit="ctrl.createJailbird()">
+      {{ctrl.image}}
+      Name: <input type="text" ng-model="ctrl.name" placeholder="Name"/>
+      conviction: <input type="text" ng-model="ctrl.conviction" placeholder="Conviction" />
+      Sentence: <input type="text" ng-model="ctrl.sentence" placeholder="Sentence" />
+      <input type="submit" value="Process Inmate">
+    </form>
+    <ul>
+      <li ng-repeat="jailbird in">
+        <a class="name" href="{{jailbird.url}}"> {{jailbird.name}} </a><br/>
+        <button ng-click="ctrl.deleteJailbird(jailbird)">RELEASE INMATE</button>
 
+        <a
+        ng-if="$index !== ctrl.indexOfEditFormToShow"
+        ng-click="ctrl.indexOfEditFormToShow = $index"
+        href="#"> EDIT THE INMATE
+      </a>
+
+      <form ng-if="$index == ctrl.indexOfEditFormToShow" ng-submit="ctrl.editJailbird(jailbird)">
+        <input ng-model="ctrl.updatedName" type="text" placeholder="Name" />
+        <input ng-model="ctrl.updatedConviction" type="text" placeholder="Conviction" />
+        <input ng-model="ctrl.updatedSentence" type="text" placeholder="Sentence" />
+        <input ng-model="ctrl.updatedImage" type="text" placeholder="Image" />
+      </form>
+      </li>
+    </ul>
   </body>
 </html>
