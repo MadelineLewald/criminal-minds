@@ -1,19 +1,19 @@
-const express = require('express')
+const express = require('express');
 const app = express();
 const mongoose = require('mongoose')
 
-app.get('/', (req, res) => {
-  res.send('Hello world')
-} )
+app.use(express.json());
+app.use(express.static('public'));
 
-
+const criminalController = require('./controllers/criminals.js')
+app.use('/jailbird', criminalController)
 
 app.listen(3001, () => {
   console.log('listening');
 })
 
 mongoose.connect(
-    'mongodb://localhost:27017/meancrud',
+    'mongodb://localhost:27017/jailbirds',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
