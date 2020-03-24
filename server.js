@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 const criminalController = require('./controllers/criminals.js')
-app.use('/jailbird', criminalController)
+app.use('/jailbirds', criminalController)
 
 app.listen(3001, () => {
   console.log('listening');
