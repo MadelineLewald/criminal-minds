@@ -3,3 +3,7 @@
 margin: 2em;
 border: 1px mediumpurple solid;
 }
+
+li{
+  list-style: none
+}
