@@ -18,7 +18,7 @@
       <input type="submit" value="Process Inmate">
     </form>
     <ul>
-      <li ng-repeat="jailbird in">
+      <li ng-repeat="jailbird in ctrl.jailbirds">
         <a class="name" href="{{jailbird.url}}"> {{jailbird.name}} </a><br/>
         <button ng-click="ctrl.deleteJailbird(jailbird)">RELEASE INMATE</button>
 
