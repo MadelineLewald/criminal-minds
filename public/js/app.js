@@ -5,6 +5,7 @@ app.controller('MyController', ['$http', function($http){
   this.conviction = null;
   this.sentence = null;
   this.image = null;
+  this.indexOfEditFormToShow = null;
 
   const controller = this;
 
@@ -20,10 +21,6 @@ app.controller('MyController', ['$http', function($http){
       }
     }).then(
       function(response){
-        controller.name = null;
-        controller.conviction = null;
-        controller.sentence = null;
-        controller.image = null;
         controller.getJailbirds();
       },
       function(error){
@@ -38,6 +35,7 @@ app.controller('MyController', ['$http', function($http){
       url: '/jailbirds/' + jailbird._id
     }).then(
       function(){
+        
         controller.getJailbirds();
       },
       function(error){
@@ -58,6 +56,7 @@ app.controller('MyController', ['$http', function($http){
       }
     }).then(
       function(response){
+        controller.indexOfEditFormToShow = null;
         controller.getJailbirds();
       },
       function(error){
