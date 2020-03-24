@@ -17,24 +17,37 @@
       Sentence: <input type="text" ng-model="ctrl.sentence" placeholder="Sentence" />
       <input type="submit" value="Process Inmate">
     </form>
-    <ul>
+
+    <!-- <ul>
       <li ng-repeat="jailbird in ctrl.jailbirds">
         <a class="name" href="{{jailbird.url}}"> {{jailbird.name}} </a><br/>
-        <button ng-click="ctrl.deleteJailbird(jailbird)">RELEASE INMATE</button>
+
 
         <a
         ng-if="$index !== ctrl.indexOfEditFormToShow"
         ng-click="ctrl.indexOfEditFormToShow = $index"
         href="#">EDIT THE INMATE
-      </a>
+      </a> -->
 
-      <form ng-if="$index == ctrl.indexOfEditFormToShow" ng-submit="ctrl.editJailbird(jailbird)">
+      <!-- <form ng-if="$index == ctrl.indexOfEditFormToShow" ng-submit="ctrl.editJailbird(jailbird)">
         <input ng-model="ctrl.updatedName" type="text" placeholder="Name" />
         <input ng-model="ctrl.updatedConviction" type="text" placeholder="Conviction" />
         <input ng-model="ctrl.updatedSentence" type="text" placeholder="Sentence" />
         <input ng-model="ctrl.updatedImage" type="text" placeholder="Image" />
       </form>
       </li>
-    </ul>
+    </ul> -->
+
+      <div>
+      <h2>Show Jailbirds</h2>
+        <ul>
+          <li ng-repeat= "jailbirds in ctrl.jailbirds">
+            {{jailbirds.name}}
+            <!-- <h3>{{jailbird.name}}</h3> -->
+              <!-- <button ng-click="ctrl.deleteJailbird(jailbird)">RELEASE INMATE</button> -->
+          </li>
+
+        </ul>
+      </div>
   </body>
 </html>
