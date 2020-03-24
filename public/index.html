@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js" charset="utf-8"></script>
   <script src="/js/app.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="/css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Abel|Lobster&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <title></title>
@@ -11,38 +12,36 @@
 <body ng-controller="MyController as ctrl">
   <h1>Inmates</h1>
   <form ng-submit="ctrl.createJailbird()">
-
+    {{ctrl.image}}
     Name: <input type="text" ng-model="ctrl.name" placeholder="Name"/>
     conviction: <input type="text" ng-model="ctrl.conviction" placeholder="Conviction" />
     Sentence: <input type="text" ng-model="ctrl.sentence" placeholder="Sentence" />
-    Image: <input type="text" ng-model="ctrl.image" placeholder="Image">
     <input type="submit" value="Process Inmate">
   </form>
+  <ul>
+    <li ng-repeat="jailbird in ctrl.jailbirds">
+      <a class="name" href="{{jailbird.url}}"> {{jailbird.name}} </a><br/>
 
-  <h2>Show Jailbirds</h2>
-  <div>
-    <ul>
-      <li ng-repeat="jailbird in ctrl.jailbirds">
-        Name: <h3>{{jailbird.name}} </h3><br/>
-        Conviction: <h4>{{jailbird.conviction}}</h4>
-        Sentence: <h4>{{jailbird.sentence}}</h4>
-        Picture:  <img ng-src="{{jailbird.image}}" alt="">
+      Name: <h3>{{jailbird.name}} </h3><br/>
+      Conviction: <h4>{{jailbird.conviction}}</h4>
+      Sentence: <h4>{{jailbird.sentence}}</h4>
+      Picture:  <img ng-src="{{jailbird.image}}" alt="">
+
+      <a
+      ng-if="$index !== ctrl.indexOfEditFormToShow"
+      ng-click="ctrl.indexOfEditFormToShow = $index"
+      href="#">EDIT THE INMATE
+    </a>
+    <button ng-click="ctrl.deleteJailbird(jailbird)">RELEASE INMATE</button>
 
 
-        <a
-        ng-if="$index !== ctrl.indexOfEditFormToShow"
-        ng-click="ctrl.indexOfEditFormToShow = $index"
-        href="#">EDIT THE INMATE
-      </a>
-
-      <form ng-if="$index == ctrl.indexOfEditFormToShow" ng-submit="ctrl.editJailbird(jailbird)">
-        <input ng-model="ctrl.updatedName" type="text" placeholder="Name" />
-        <input ng-model="ctrl.updatedConviction" type="text" placeholder="Conviction" />
-        <input ng-model="ctrl.updatedSentence" type="text" placeholder="Sentence" />
-        <input ng-model="ctrl.updatedImage" type="text" placeholder="Image" />
-      </form>
-    </li>
-  </ul>
-</div>
+    <form ng-if="$index == ctrl.indexOfEditFormToShow" ng-submit="ctrl.editJailbird(jailbird)">
+      <input ng-model="ctrl.updatedName" type="text" placeholder="Name" />
+      <input ng-model="ctrl.updatedConviction" type="text" placeholder="Conviction" />
+      <input ng-model="ctrl.updatedSentence" type="text" placeholder="Sentence" />
+      <input ng-model="ctrl.updatedImage" type="text" placeholder="Image" />
+    </form>
+  </li>
+</ul>
 </body>
 </html>
