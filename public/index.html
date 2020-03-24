@@ -11,7 +11,7 @@
 <body ng-controller="MyController as ctrl">
   <h1>Inmates</h1>
   <form ng-submit="ctrl.createJailbird()">
-    
+
     Name: <input type="text" ng-model="ctrl.name" placeholder="Name"/>
     conviction: <input type="text" ng-model="ctrl.conviction" placeholder="Conviction" />
     Sentence: <input type="text" ng-model="ctrl.sentence" placeholder="Sentence" />
@@ -20,7 +20,7 @@
   </form>
 
   <h2>Show Jailbirds</h2>
-  <div>
+  <div class="person">
     <ul>
       <li ng-repeat="jailbird in ctrl.jailbirds">
         Name: <h3>{{jailbird.name}} </h3><br/>
