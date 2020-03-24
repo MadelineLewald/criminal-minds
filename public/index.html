@@ -25,7 +25,7 @@
         <a
         ng-if="$index !== ctrl.indexOfEditFormToShow"
         ng-click="ctrl.indexOfEditFormToShow = $index"
-        href="#"> EDIT THE INMATE
+        href="#">EDIT THE INMATE
       </a>
 
       <form ng-if="$index == ctrl.indexOfEditFormToShow" ng-submit="ctrl.editJailbird(jailbird)">
